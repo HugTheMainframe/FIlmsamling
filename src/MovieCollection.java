@@ -10,6 +10,14 @@ public class MovieCollection {
         return movieCollection;
      }
 
+     public Movie searchMovie(String movie){
+        for (Movie movieSearch : movieCollection){
+            if(movieSearch.getTitle().contains(movie.toLowerCase())){
+                return movieSearch;
+            }
+        }return null;
+     }
+
 
      @Override
     public String toString() {

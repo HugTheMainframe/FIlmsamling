@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Controller {
-    MovieCollection movieCollection;
+    private MovieCollection movieCollection;
 
     public Controller(){
         this.movieCollection = new MovieCollection();
@@ -13,6 +13,10 @@ public class Controller {
 
     public MovieCollection getMovieCollection(){
         return movieCollection;
+    }
+
+    public Movie searchMovie(String movie){
+        return movieCollection.searchMovie(movie);
     }
 
     @Override
