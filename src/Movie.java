@@ -39,4 +39,19 @@ public class Movie {
     public String getGenre(){
         return genre;
     }
+
+@Override
+    public String toString(){
+        String movieOutput = "";
+        movieOutput += "Title: " + getTitle() + "\nDirector: " + getDirector();
+        if (getColor() == true){
+            movieOutput += "\nColor: Is in color";
+        } else {
+            movieOutput += "\nColor: is not in color";
+        }
+        movieOutput += "\nLength: " + lengthInMinutes + " Min" +
+                "\nYear: " + yearMade + "\nGenre: " + genre + "\n";
+        return movieOutput;
+
+}
 }
