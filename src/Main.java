@@ -6,7 +6,7 @@ public class Main {
     }
     public static void menu(){
         Scanner input = new Scanner(System.in);
-        MovieCollection collection = new MovieCollection();
+        Controller controller = new Controller();
         String userChoice = "";
         while(!userChoice.equals("2")){
             System.out.println("1. Create a movie");
@@ -27,7 +27,7 @@ public class Main {
                 System.out.println("genre");
                 input.nextLine();
                 String genre = input.nextLine();
-                collection.addMovie(new Movie(title, director, color, lengthInMinutes, yearMade, genre));
+                controller.addMovie(new Movie(title, director, color, lengthInMinutes, yearMade, genre));
             }
         }
     }
