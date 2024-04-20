@@ -14,11 +14,11 @@ public class MovieCollection {
         String total = "";
         for(Movie mv : movieCollection){
             if(mv.getTitle().toLowerCase().contains(movie.toLowerCase())){
-                total += mv.toString();
+                total += mv.toString() + "\n";
             } else {
                 total = null;
             }
-        }return total;
+        }return total ;
     }
 
 
