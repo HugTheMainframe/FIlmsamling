@@ -10,13 +10,17 @@ public class MovieCollection {
         return movieCollection;
      }
 
-     public Movie searchMovie(String movie){
-        for (Movie movieSearch : movieCollection){
-            if(movieSearch.getTitle().contains(movie.toLowerCase())){
-                return movieSearch;
+    public String searchMovie(String movie){
+        String total = "";
+        for(Movie mv : movieCollection){
+            if(mv.getTitle().toLowerCase().contains(movie.toLowerCase())){
+                total += mv.toString();
+            } else {
+                total = null;
             }
-        }return null;
-     }
+        }return total;
+    }
+
 
 
      @Override

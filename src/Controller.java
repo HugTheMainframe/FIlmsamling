@@ -15,7 +15,7 @@ public class Controller {
         return movieCollection;
     }
 
-    public Movie searchMovie(String movie){
+    public String searchMovie(String movie){
         return movieCollection.searchMovie(movie);
     }
 

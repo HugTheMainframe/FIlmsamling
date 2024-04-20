@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -21,7 +22,7 @@ public class Main {
                 System.out.println("director");
                 String director = input.nextLine();
                 System.out.println("color(yes/no)");
-                boolean color = input.nextBoolean();
+                boolean color = input.next().equalsIgnoreCase("yes");
                 System.out.println("Length of film(Min)");
                 int lengthInMinutes = input.nextInt();
                 System.out.println("year made");
@@ -34,13 +35,14 @@ public class Main {
                 System.out.println(controller);
             } else if (userChoice.equals("3")){
                 System.out.println("Please type the movie you are searching for: ");
-                userChoice = input.nextLine();
-                Movie movie = controller.searchMovie(userChoice);
-                if(movie != null){
-                    System.out.println("Here is the movie you searched for: " + movie + "\n");
+                String search = input.nextLine();
+                String movies = controller.searchMovie(search);
+                if(movies != null && !movies.equals("")){
+                    System.out.println("Here is the movie you searched for: \n" + movies + "\n");
                 } else {
                     System.out.println("No movie found... ");
                 }
+
             } else {
                 if(!userChoice.equals("4"))
                     System.out.println("Please input a valid input");
