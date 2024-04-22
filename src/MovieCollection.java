@@ -15,12 +15,27 @@ public class MovieCollection {
         for(Movie mv : movieCollection){
             if(mv.getTitle().toLowerCase().contains(movie.toLowerCase())){
                 total += mv.toString() + "\n";
-            } else {
-                total = null;
             }
-        }return total ;
+        }return total;
     }
 
+    public Movie findMovie(String movie){
+        for(Movie mv : movieCollection){
+            if(mv.getTitle().equalsIgnoreCase(movie.toLowerCase())){
+                return mv;
+            }
+        } return null;
+    }
+
+    public void editMovies(Movie movieTitle, String title, String director, boolean color, int lengthInMinutes,
+                           int yearMade, String genre){
+        movieTitle.setTitle(title);
+        movieTitle.setDirector(director);
+        movieTitle.setColor(color);
+        movieTitle.setLengthInMinutes(lengthInMinutes);
+        movieTitle.setYearMade(yearMade);
+        movieTitle.setGenre(genre);
+    }
 
 
      @Override

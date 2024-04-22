@@ -40,6 +40,30 @@ public class Movie {
         return genre;
     }
 
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public void setDirector(String director){
+        this.director = director;
+    }
+
+    public void setColor(boolean color){
+        this.color = color;
+    }
+
+    public void setLengthInMinutes(int lengthInMinutes){
+        this.lengthInMinutes = lengthInMinutes;
+    }
+
+    public void setYearMade(int yearMade){
+        this.yearMade = yearMade;
+    }
+
+    public void setGenre(String genre){
+        this.genre = genre;
+    }
+
 @Override
     public String toString(){
         String movieOutput = "";
@@ -50,7 +74,7 @@ public class Movie {
             movieOutput += "\nColor: is not in color";
         }
         movieOutput += "\nLength: " + lengthInMinutes + " Min" +
-                "\nYear: " + yearMade + "\nGenre: " + genre + "\n";
+                "\nYear: " + yearMade + "\nGenre: " + genre;
         return movieOutput;
 
 }
