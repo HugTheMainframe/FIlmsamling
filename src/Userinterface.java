@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Userinterface {
@@ -24,9 +25,9 @@ public class Userinterface {
         System.out.println("Color(yes/no)");
         boolean color = input.next().equalsIgnoreCase("yes");
         System.out.println("Length of film(Min)");
-        int lengthInMinutes = input.nextInt();
+        int lengthInMinutes = misMatchInput();
         System.out.println("Year made");
-        int yearMade = input.nextInt();
+        int yearMade = misMatchInput();
         System.out.println("Genre");
         input.nextLine();
         String genre = input.nextLine();
@@ -52,45 +53,49 @@ public class Userinterface {
         System.out.println("Please type in the movie you want to edit: ");
         String search = input.nextLine();
         Movie movieToEdit = controller.findMovie(search);
-        if (!movieToEdit.getTitle().isEmpty()){
-            System.out.println("1. Want to edit title: ");
-            System.out.println("2. Want to edit director: ");
-            System.out.println("3. Want to edit isInColor: ");
-            System.out.println("4. Want to edit length of film: ");
-            System.out.println("5. Want to edit year made: ");
-            System.out.println("6. Want to edit genre: ");
-            System.out.println("7. Want to edit the whole movie info: ");
-            System.out.println("8. Want to return to menu: ");
-            String editChoice = input.nextLine();
-            switch (editChoice) {
-                case "1" -> movieToEdit.setTitle(input.nextLine());
-                case "2" -> movieToEdit.setDirector(input.nextLine());
-                case "3" -> movieToEdit.setColor(input.next().equalsIgnoreCase("yes"));
-                case "4" -> movieToEdit.setLengthInMinutes(input.nextInt());
-                case "5" -> movieToEdit.setYearMade(input.nextInt());
-                case "6" -> movieToEdit.setGenre(input.nextLine());
-                case "7" -> {
-                    System.out.println("Title");
-                    String title = input.nextLine();
-                    System.out.println("Director");
-                    String director = input.nextLine();
-                    System.out.println("Color(yes/no)");
-                    boolean color = input.next().equalsIgnoreCase("yes");
-                    System.out.println("Length of film(Min)");
-                    int lengthInMinutes = input.nextInt();
-                    System.out.println("Year made");
-                    int yearMade = input.nextInt();
-                    System.out.println("Genre");
-                    input.nextLine();
-                    String genre = input.nextLine();
-                    controller.editMovies(movieToEdit, title, director, color, lengthInMinutes, yearMade, genre);
-                }
-                case "8" -> startProgram();
-                default -> {
-                    invalidInput();
-                    editMovies();
+        try {
+            if (!movieToEdit.getTitle().isEmpty()){
+                System.out.println("1. Want to edit title: ");
+                System.out.println("2. Want to edit director: ");
+                System.out.println("3. Want to edit isInColor: ");
+                System.out.println("4. Want to edit length of film: ");
+                System.out.println("5. Want to edit year made: ");
+                System.out.println("6. Want to edit genre: ");
+                System.out.println("7. Want to edit the whole movie info: ");
+                System.out.println("8. Want to return to menu: ");
+                String editChoice = input.nextLine();
+                switch (editChoice) {
+                    case "1" -> movieToEdit.setTitle(input.nextLine());
+                    case "2" -> movieToEdit.setDirector(input.nextLine());
+                    case "3" -> movieToEdit.setColor(input.next().equalsIgnoreCase("yes"));
+                    case "4" -> movieToEdit.setLengthInMinutes(misMatchInput());
+                    case "5" -> movieToEdit.setYearMade(misMatchInput());
+                    case "6" -> movieToEdit.setGenre(input.nextLine());
+                    case "7" -> {
+                        System.out.println("Title");
+                        String title = input.nextLine();
+                        System.out.println("Director");
+                        String director = input.nextLine();
+                        System.out.println("Color(yes/no)");
+                        boolean color = input.next().equalsIgnoreCase("yes");
+                        System.out.println("Length of film(Min)");
+                        int lengthInMinutes = misMatchInput();
+                        System.out.println("Year made");
+                        int yearMade = misMatchInput();
+                        System.out.println("Genre");
+                        input.nextLine();
+                        String genre = input.nextLine();
+                        controller.editMovies(movieToEdit, title, director, color, lengthInMinutes, yearMade, genre);
+                    }
+                    case "8" -> startProgram();
+                    default -> {
+                        invalidInput();
+                        editMovies();
+                    }
                 }
             }
+        } catch (NullPointerException npe){
+            System.out.println("No movie with that name is in your collection\n");
         }
     }
 
@@ -120,5 +125,14 @@ public class Userinterface {
             }
             userPrompt();
         }
+    }
+
+    public int misMatchInput(){
+        Scanner input = new Scanner(System.in);
+        try {
+            return input.nextInt();
+        } catch (InputMismatchException imme){
+            System.out.println("Please give a integer value\n");
+        } return 0;
     }
 }
