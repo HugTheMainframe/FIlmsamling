@@ -100,5 +100,23 @@ class MovieCollectionTest {
         Assertions.assertEquals(expectedOutput, actualOutput);
     }
 
+    @Test
+    void removeMovie(){
+        //Arrange
+        MovieCollection movieCollection = new MovieCollection();
+        Movie movie = new Movie("bob", "james", true, 90, 1998, "Action");
+        movieCollection.addMovie(movie);
 
+        //Act
+        movieCollection.removeMovie(movie);
+        int actualValue = movieCollection.getMovieCollection().size();
+        String actualOutput = movieCollection.searchMovie("bob");
+
+        //Assert
+        int expectedValue = 0;
+        String expectedOutput = "";
+
+        Assertions.assertEquals(expectedValue, actualValue);
+        Assertions.assertEquals(expectedOutput, actualOutput);
+    }
 }

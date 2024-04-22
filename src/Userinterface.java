@@ -14,7 +14,8 @@ public class Userinterface {
         System.out.println("2. Overview of collection");
         System.out.println("3. Search by movie title");
         System.out.println("4. Edit movie");
-        System.out.println("5. Quit");
+        System.out.println("5. Remove a movie from collection");
+        System.out.println("6. Quit");
     }
 
     public void createMovie(){
@@ -99,6 +100,13 @@ public class Userinterface {
         }
     }
 
+    public void removeMovie(){
+        System.out.println("Please type in the movie you want to remove: ");
+        String search = input.nextLine();
+        Movie movieToBeRemoved = controller.findMovie(search);
+        controller.removeMovie(movieToBeRemoved);
+    }
+
     public void invalidInput(){
         System.out.println("Please input a valid input");
     }
@@ -118,6 +126,8 @@ public class Userinterface {
             } else if (userChoice.equals("4")){
                 editMovies();
             } else if (userChoice.equals("5")){
+                removeMovie();
+            } else if(userChoice.equals("6")) {
                 System.out.println("Quiting...");
                 break;
             } else {

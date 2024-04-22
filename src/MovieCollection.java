@@ -37,6 +37,9 @@ public class MovieCollection {
         movieTitle.setGenre(genre);
     }
 
+    public void removeMovie(Movie movie){
+        movieCollection.remove(movie);
+    }
 
      @Override
     public String toString() {

@@ -28,6 +28,10 @@ public class Controller {
         movieCollection.editMovies(movieTitle, title, director, color, lengthInMinutes, yearMade, genre);
     }
 
+    public void removeMovie(Movie movie){
+        movieCollection.removeMovie(movie);
+    }
+
     @Override
     public String toString(){
         return movieCollection.toString();
