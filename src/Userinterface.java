@@ -137,12 +137,19 @@ public class Userinterface {
         }
     }
 
-    public int misMatchInput(){
+    public int misMatchInput() {
         Scanner input = new Scanner(System.in);
-        try {
-            return input.nextInt();
-        } catch (InputMismatchException imme){
-            System.out.println("Please give a integer value\n");
-        } return 0;
+        int number = 0;
+        boolean flag = false;
+        while (!flag) {
+            try {
+                number = input.nextInt();
+                flag = true;
+            } catch (InputMismatchException imme) {
+                System.out.print("Please give a integer value\n");
+                input.nextLine();
+            }
+        }
+        return number;
     }
 }
